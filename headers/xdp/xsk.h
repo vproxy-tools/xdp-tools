@@ -221,6 +221,8 @@ struct xsk_socket_config {
 	};
 	__u32 xdp_flags;
 	__u16 bind_flags;
+
+	__u32 busy_poll_budget;
 };
 
 /* Set config to NULL to get the default configuration. */
