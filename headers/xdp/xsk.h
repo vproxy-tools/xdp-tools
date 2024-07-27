@@ -194,6 +194,7 @@ int xsk_socket__fd(const struct xsk_socket *xsk);
 #define XSK_UMEM__DEFAULT_FRAME_SIZE     (1 << XSK_UMEM__DEFAULT_FRAME_SHIFT)
 #define XSK_UMEM__DEFAULT_FRAME_HEADROOM 0
 #define XSK_UMEM__DEFAULT_FLAGS 0
+#define XSK_UMEM__DEFAULT_TX_METADATA_LEN 0
 
 struct xsk_umem_config {
 	__u32 fill_size;
@@ -201,6 +202,7 @@ struct xsk_umem_config {
 	__u32 frame_size;
 	__u32 frame_headroom;
 	__u32 flags;
+	__u32 tx_metadata_len;
 };
 
 int xsk_setup_xdp_prog(int ifindex, int *xsks_map_fd);
