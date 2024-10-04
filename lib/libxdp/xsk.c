@@ -356,6 +356,9 @@ int xsk_umem__create_with_fd(struct xsk_umem **umem_ptr, int fd,
 	mr.headroom = umem->config.frame_headroom;
 	mr.flags = umem->config.flags;
 	mr.tx_metadata_len = umem->config.tx_metadata_len;
+	if (mr.tx_metadata_len) {
+		mr.flags |= XDP_UMEM_TX_METADATA_LEN;
+	}
 
 	err = setsockopt(umem->fd, SOL_XDP, XDP_UMEM_REG, &mr, sizeof(mr));
 	if (err) {

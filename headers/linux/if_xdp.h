@@ -29,6 +29,10 @@
 /* Flags for xsk_umem_config flags */
 #define XDP_UMEM_UNALIGNED_CHUNK_FLAG (1 << 0)
 
+/* Request to reserve tx_metadata_len bytes of per-chunk metadata.
+ */
+#define XDP_UMEM_TX_METADATA_LEN (1 << 2)
+
 struct sockaddr_xdp {
 	__u16 sxdp_family;
 	__u16 sxdp_flags;
