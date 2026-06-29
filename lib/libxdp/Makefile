@@ -9,10 +9,10 @@ OBJDIR ?= .
 SHARED_OBJDIR := $(OBJDIR)/sharedobjs
 STATIC_OBJDIR := $(OBJDIR)/staticobjs
 OBJS := libxdp.o xsk.o
-XDP_OBJS := xdp-dispatcher.o xsk_def_xdp_prog.o xsk_def_xdp_prog_5.3.o
-EMBEDDED_XDP_OBJS := $(addsuffix .embed.o,$(basename $(XDP_OBJS)))
+XDP_OBJS :=
+EMBEDDED_XDP_OBJS :=
 SHARED_OBJS := $(addprefix $(SHARED_OBJDIR)/,$(OBJS))
-STATIC_OBJS := $(addprefix $(STATIC_OBJDIR)/,$(OBJS)) $(EMBEDDED_XDP_OBJS)
+STATIC_OBJS := $(addprefix $(STATIC_OBJDIR)/,$(OBJS))
 STATIC_LIBS := $(OBJDIR)/libxdp.a
 MAN_PAGE := libxdp.3
 MAN_OBJ := ${MAN_PAGE:.3=.man}
@@ -20,7 +20,7 @@ MAN_FILES := $(MAN_PAGE)
 TEST_DIR := tests
 
 SHARED_CFLAGS += -fPIC -DSHARED
-STATIC_CFLAGS += -D LIBXDP_STATIC=1
+STATIC_CFLAGS +=
 LIB_HEADERS := $(wildcard $(HEADER_DIR)/xdp/*.h)
 BPF_HEADERS := $(wildcard $(HEADER_DIR)/bpf/*.h) $(wildcard $(HEADER_DIR)/xdp/*.h)
 EXTRA_LIB_DEPS := $(OBJECT_LIBBPF) $(LIBMK) $(LIB_OBJS) $(LIB_HEADERS) compat.h libxdp_internal.h xsk_def_xdp_prog.h bpf_instr.h
